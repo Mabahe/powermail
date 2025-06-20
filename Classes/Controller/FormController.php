@@ -532,6 +532,18 @@ class FormController extends AbstractController
         return $response;
     }
 
+    public function thanksAction(
+        Form $form = null,
+        int $page = 0
+    ): ResponseInterface {
+        $this->view->assignMultiple([
+            'form' => $form,
+            'page' => $page
+        ]);
+
+        return $this->htmlResponse();
+    }
+
     /**
      * @return void
      * @codeCoverageIgnore

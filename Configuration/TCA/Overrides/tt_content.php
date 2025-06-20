@@ -56,6 +56,35 @@ foreach ($plugins as $plugin) {
     $GLOBALS['TCA']['tt_content']['ctrl']['typeicon_classes'][$CType] = 'extension-powermail-main';
 }
 
+ExtensionUtility::registerPlugin(
+    'powermail',
+    'Thanks',
+    'LLL:EXT:powermail/Resources/Private/Language/locallang_mod.xlf:powermail_thanks.title',
+    null,
+    'powermail'
+);
+
+$GLOBALS['TCA']['tt_content']['types']['powermail_thanks']['showitem'] = '
+        --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:general,
+            --palette--;;general,
+            --palette--;;headers,
+        --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.appearance,
+            --palette--;;frames,
+            --palette--;;appearanceLinks,
+        --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:language,
+            --palette--;;language,
+        --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access,
+            --palette--;;hidden,
+            --palette--;;access,
+        --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:categories,
+            categories,
+        --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:notes,
+            rowDescription,
+        --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:extended,
+    ';
+
+$GLOBALS['TCA']['tt_content']['ctrl']['typeicon_classes']['powermail_thanks'] = 'extension-powermail-main';
+
 /**
  * Disable not needed fields in tt_content
  */

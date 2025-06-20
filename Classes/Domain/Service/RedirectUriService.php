@@ -22,12 +22,22 @@ class RedirectUriService
      *
      * @return string|null
      */
-    public function getRedirectUri(): ?string
+    public function getRedirectUri(int $formId = 0, int $formPage = 0): ?string
     {
         $uri = null;
         $target = $this->getTarget();
         if ($target !== null) {
-            $uri = $this->contentObject->typoLink_URL(['parameter' => $target]);
+            $conf = [
+                'parameter' => $target
+            ];
+            $conf['additionalParams'] = '';
+            if ($formId > 0) {
+                $conf['additionalParams'] .= '&tx_powermail_thanks[form]=' . $formId;
+            }
+            if ($formPage > 0) {
+                $conf['additionalParams'] .= '&tx_powermail_thanks[page]=' . $formPage;
+            }
+            $uri = $this->contentObject->typoLink_URL($conf);
         }
         return $uri;
     }

@@ -42,6 +42,9 @@
 			<trans-unit id="powermail_pi4.description">
 				<source>A plugin with all actions</source>
 			</trans-unit>
+			<trans-unit id="powermail_thanks.title">
+				<source>Powermail Thanks</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

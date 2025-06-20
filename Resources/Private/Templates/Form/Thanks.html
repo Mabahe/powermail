@@ -1,0 +1,13 @@
+{namespace vh=In2code\Powermail\ViewHelpers}
+<f:layout name="Default" />
+
+Render Powermail Thx Page
+{form}										Complete Form Object
+
+<f:section name="main">
+
+    <div class="{settings.styles.framework.createClasses}" data-powermail-form="{form.uid}">
+        <f:render partial="Misc/GoogleAdwordsConversion" />
+    </div>
+
+</f:section>

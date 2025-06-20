@@ -77,6 +77,18 @@ call_user_func(function () {
         \TYPO3\CMS\Extbase\Utility\ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT
     );
 
+    \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+        'Powermail',
+        'Thanks',
+        [
+            \In2code\Powermail\Controller\FormController::class => 'thanks'
+        ],
+        [
+            \In2code\Powermail\Controller\FormController::class => 'thanks'
+        ],
+        \TYPO3\CMS\Extbase\Utility\ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT
+    );
+
     /**
      * Include PageTSconfig
      */

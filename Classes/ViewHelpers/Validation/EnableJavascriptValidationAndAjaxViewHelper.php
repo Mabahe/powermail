@@ -53,7 +53,7 @@ class EnableJavascriptValidationAndAjaxViewHelper extends AbstractValidationView
 
             if ($this->addRedirectUri) {
                 $redirectService = GeneralUtility::makeInstance(RedirectUriService::class, $this->contentObject);
-                $redirectUri = $redirectService->getRedirectUri();
+                $redirectUri = $redirectService->getRedirectUri($form->getUid());
                 if ($redirectUri) {
                     $additionalAttributes['data-powermail-ajax-uri'] = $redirectUri;
                 }

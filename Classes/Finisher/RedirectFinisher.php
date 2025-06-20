@@ -28,7 +28,7 @@ class RedirectFinisher extends AbstractFinisher implements FinisherInterface
     public function redirectToUriFinisher(): void
     {
         $redirectService = GeneralUtility::makeInstance(RedirectUriService::class, $this->contentObject);
-        $uri = $redirectService->getRedirectUri();
+        $uri = $redirectService->getRedirectUri($this->mail->getForm()->getUid(), $this->contentObject->getRequest()->getAttribute('routing')->getPageId());
         if (!empty($uri) && $this->isRedirectEnabled()) {
             $responseFactory = GeneralUtility::makeInstance(ResponseFactory::class);
             $response = $responseFactory
