@@ -12,6 +12,7 @@ use In2code\Powermail\Domain\Service\Mail\SendDisclaimedMailPreflight;
 use In2code\Powermail\Domain\Service\Mail\SendOptinConfirmationMailPreflight;
 use In2code\Powermail\Domain\Service\Mail\SendReceiverMailPreflight;
 use In2code\Powermail\Domain\Service\Mail\SendSenderMailPreflight;
+use In2code\Powermail\Events\FormControllerCreateActionBeforeRenderViewEvent;
 use In2code\Powermail\Exception\DeprecatedException;
 use In2code\Powermail\Finisher\FinisherRunner;
 use In2code\Powermail\Utility\ConfigurationUtility;
@@ -202,6 +203,10 @@ class FormController extends AbstractController
         }
         $isSavingOfMailAllowed = false;
         $this->signalDispatch(__CLASS__, __FUNCTION__ . 'BeforeRenderView', [$mail, $hash, $this]);
+
+        $event = GeneralUtility::makeInstance(FormControllerCreateActionBeforeRenderViewEvent::class, $mail, $hash, $this);
+        $this->eventDispatcher->dispatch($event);
+
         /** @noinspection PhpUnhandledExceptionInspection */
         $this->dataProcessorRunner->callDataProcessors(
             $mail,
